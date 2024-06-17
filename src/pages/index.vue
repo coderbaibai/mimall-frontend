@@ -5,7 +5,7 @@
         <div class="nav-menu">
           <ul class="menu-wrap">
             <li class="menu-item">
-              <a href="javascript:;">手机 电话卡</a>
+              <a href="javascript:;">手机</a>
               <div class="children">
                 <ul v-for="(item,i) in menuList" v-bind:key="i">
                   <li v-for="(sub,j) in item" v-bind:key="j">
@@ -18,25 +18,25 @@
               </div>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">电视 盒子</a>
+              <a href="javascript:;">电视</a>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">家电</a>
             </li>
             <li class="menu-item">
               <a href="javascript:;">笔记本 平板</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">家电 插线板</a>
+              <a href="javascript:;">出行 穿戴</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">出行 穿戴</a>
+              <a href="javascript:;">生活 箱包</a>
             </li>
             <li class="menu-item">
               <a href="javascript:;">智能 路由器</a>
             </li>
             <li class="menu-item">
               <a href="javascript:;">电源 配件</a>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:;">生活 箱包</a>
             </li>
           </ul>
         </div>
@@ -151,10 +151,6 @@
             id:'',
             img:'/imgs/slider/slide-4.jpg'
           },
-          {
-            id:'',
-            img:'/imgs/slider/slide-1.jpg'
-          }
         ],
         menuList:[
           [

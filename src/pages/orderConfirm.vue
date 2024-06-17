@@ -215,11 +215,11 @@ export default{
       let {checkedItem,userAction} = this;
       let method,url,params={};
       if(userAction == 0){
-        method = 'post',url = '/shippings';
+        method = 'post',url = 'http://127.0.0.1:4523/m1/4640475-4291030-default/shippings';
       }else if(userAction == 1){
-        method = 'put',url = `/shippings/${checkedItem.id}`;
+        method = 'put',url = `http://127.0.0.1:4523/m1/4640475-4291030-default/shippings/${checkedItem.id}`;
       }else {
-        method = 'delete',url = `/shippings/${checkedItem.id}`;
+        method = 'delete',url = `http://127.0.0.1:4523/m1/4640475-4291030-default/shippings/${checkedItem.id}`;
       }
       if(userAction == 0 || userAction ==1){
         let { receiverName, receiverMobile, receiverProvince, receiverCity, receiverDistrict, receiverAddress, receiverZip} = checkedItem;

@@ -1,8 +1,8 @@
 <template>
   <div class="order-header">
     <div class="container clearfix">
-      <div class="header-logo">
-        <a href="/#/index"></a>
+      <div class="logo">
+        <a href="/#/index"><img src="/imgs/logo.png"></a>
       </div>
       <div class="title">
         <h2>{{title}}<slot name="tip"></slot></h2>
@@ -29,8 +29,12 @@
   .order-header{
     padding:30px 0;
     border-bottom:2px solid #FF6600;
-    .header-logo{
+    .logo{
       float:left;
+      img{
+          width:53px;
+          height:53px;
+      }
     }
     .title,.username{
       display:inline-block;
