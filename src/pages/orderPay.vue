@@ -2,7 +2,7 @@
   <div class="order-pay">
     <order-header title="订单支付">
       <template v-slot:tip>
-        <span>请谨防钓鱼链接或诈骗电话，了解更多</span>
+        <span>请谨防钓鱼链接或诈骗电话</span>
       </template>
     </order-header>
     <div class="wrapper">
@@ -11,7 +11,7 @@
           <div class="item-order">
             <div class="icon-succ"></div>
             <div class="order-info">
-              <h2>订单提交成功！去付款咯～</h2>
+              <h2>订单提交成功</h2>
               <p>请在<span>30分</span>内完成支付, 超时后将取消订单</p>
               <p>收货信息：{{addressInfo}}</p>
             </div>
@@ -46,11 +46,10 @@
           </div>
         </div>
         <div class="item-pay">
-          <h3>选择以下支付方式付款</h3>
+          <h3>请扫描二维码进入付款界面</h3>
           <div class="pay-way">
-            <p>支付平台</p>
-            <div class="pay pay-ali" :class="{'checked':payType==1}" @click="paySubmit(1)"></div>
-            <div class="pay pay-wechat" :class="{'checked':payType==2}" @click="paySubmit(2)"></div>
+            <!-- <div class="pay pay-ali" :class="{'checked':payType==1}" @click="paySubmit(1)"></div>
+            <div class="pay pay-wechat" :class="{'checked':payType==2}" @click="paySubmit(2)"></div> -->
           </div>
         </div>
       </div>
