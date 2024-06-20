@@ -4,24 +4,26 @@
     <div class="wrapper">
       <div class="container clearfix">
         <div class="swiper">
-          <swiper :options="swiperOption">
-              <swiper-slide><img src="/imgs/detail/phone-1.jpg" alt=""></swiper-slide>
+          <swiper v-if="images.length!=0" :options="swiperOption">
+              <swiper-slide v-for="(value,index) in images" :key="index">
+                <img :src="value" alt="">
+              </swiper-slide>
+              <!-- <swiper-slide><img src="/imgs/detail/phone-1.jpg" alt=""></swiper-slide>
               <swiper-slide><img src="/imgs/detail/phone-2.jpg" alt=""></swiper-slide>
               <swiper-slide><img src="/imgs/detail/phone-3.jpg" alt=""></swiper-slide>
-              <swiper-slide><img src="/imgs/detail/phone-4.jpg" alt=""></swiper-slide>
+              <swiper-slide><img src="/imgs/detail/phone-4.jpg" alt=""></swiper-slide> -->
               <!-- Optional controls -->
               <div class="swiper-pagination"  slot="pagination"></div>
           </swiper>
         </div>
         <div class="content">
-          <!-- <h2 class="item-title">{{product.name}}</h2> -->
-           <!-- <h2 class="item-title">{{product.subtitle}}</h2> -->
-          <h2 class="item-title">小米11</h2>
-          <h2 class="item-info">相机全新升级 / 960帧超慢动作 / 手持超级夜景 / 全球首款双频GPS / 骁龙845处理器 / 红<br/>外人脸解锁 / AI变焦双摄 / 三星 AMOLED 屏</h2>
+          <h2 class="item-title">{{product.name}}</h2>
+           <h2 class="item-info">{{product.subtitle}}</h2>
+          <!-- <h2 class="item-title">小米11</h2>
+          <h2 class="item-info">相机全新升级 / 960帧超慢动作 / 手持超级夜景 / 全球首款双频GPS / 骁龙845处理器 / 红<br/>外人脸解锁 / AI变焦双摄 / 三星 AMOLED 屏</h2> -->
           <!-- <p class="item-info">相机全新升级 / 960帧超慢动作 / 手持超级夜景 / 全球首款双频GPS / 骁龙845处理器 / 红<br/>外人脸解锁 / AI变焦双摄 / 三星 AMOLED 屏</p> -->
           <div class="delivery">小米自营</div>
-          <!-- <div class="item-price">{{product.price}}元</div> -->
-          <div class="item-price">4999元</div>
+          <div class="item-price">{{product.price}}元</div>
           <!-- <div class="item-price">{{product.price}}元<span class="del">1999元</span></div> -->
           <div class="line"></div>
           <div class="item-addr">
@@ -64,7 +66,8 @@ export default{
           el: '.swiper-pagination',
           clickable :true,
         }
-      }
+      },
+      images:[]
     }
   },
   components:{
@@ -80,6 +83,7 @@ export default{
     getProductInfo(){
       this.axios.get(`/products/${this.id}`).then((res)=>{
         this.product = res;
+        this.images = this.product.subImages.split(',');
       })
     },
     addCart(){
@@ -88,6 +92,7 @@ export default{
         selected: true
       }).then((res={cartProductVoList:0})=>{
         this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
+        this.$message.success("加入成功")
         // this.$router.push('/cart');
       });
     }

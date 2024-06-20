@@ -6,33 +6,24 @@
       </template>
     </product-param>
     <div class="content">
-      <div class="item-bg">
-        <!-- <h2>{{product.name}}</h2>
-        <h3>{{product.subtitle}}</h3> -->
-        <h2>小米11</h2>
-        <h3>暖手宝</h3>
+      <div class="item-bg" :style="{'background':background}">
+        <h2>{{product.name}}</h2>
+        <h3>{{product.subtitle}}</h3>
         <div class="price">
           <span>￥<em>{{product.price}}</em></span>
         </div>
       </div>
      
-      <div class="item-swiper">
-        <swiper :options="swiperOption">
-            
-        </swiper>
-        
-      </div>
       
     </div>
   </div>
 </template>
 <script>
-  import { swiper} from 'vue-awesome-swiper'
+  import { } from 'vue-awesome-swiper'
   import ProductParam from './../components/ProductParam'
   export default{
     name:'product',
     components:{
-      swiper,
       ProductParam
     },
     data(){
@@ -49,6 +40,7 @@
             clickable :true,
           }
         },
+        background:""
       }
     },
     mounted(){
@@ -59,6 +51,7 @@
         let id = this.$route.params.id;
         this.axios.get(`/products/${id}`).then((res)=>{
           this.product = res;
+          this.background = 'url('+this.product.detail+')'+ ' no-repeat center'
         })
       },
       buy(){
@@ -80,7 +73,7 @@
     .content{
       .item-bg{
         background:url('/imgs/product/product-bg-1.png') no-repeat center;
-        height:718px;
+        height:900px;
         text-align:center;
         h2{
           font-size:80px;

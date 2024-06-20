@@ -4,7 +4,7 @@
           <img src="/imgs/logo.png" alt="">
           <p>小米商城</p>
       </div>             
-      <div class="slogan">让全球每个人都能享受科技带来的美好生活</div>
+      <!-- <div class="slogan">让全球每个人都能享受科技带来的美好生活</div> -->
   </div>
 </template>
 

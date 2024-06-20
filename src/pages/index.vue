@@ -108,6 +108,9 @@
           }, {
             id: 45,
             img: '/imgs/ads/ads-3.png'
+          },{
+            id: 45,
+            img: '/imgs/ads/ads-4.png'
           }
         ],
         itemList: [],
