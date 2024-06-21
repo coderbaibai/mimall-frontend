@@ -48,6 +48,7 @@
         <div class="item-pay">
           <h3>请扫描二维码进入付款界面</h3>
           <div class="pay-way">
+            <img :src="imgSrc" class="payImg">
             <!-- <div class="pay pay-ali" :class="{'checked':payType==1}" @click="paySubmit(1)"></div>
             <div class="pay pay-wechat" :class="{'checked':payType==2}" @click="paySubmit(2)"></div> -->
           </div>
@@ -88,7 +89,8 @@ export default{
       payImg:'',//微信支付的二维码地址
       showPayModal:false,//是否显示二次支付确认弹框
       payment:0,//订单总金额
-      T:''//定时器ID
+      T:'',//定时器ID
+      imgSrc:''
     }
   },
   components:{
@@ -106,7 +108,18 @@ export default{
         this.addressInfo = `${item.receiverName} ${item.receiverMobile} ${item.receiverProvince} ${item.receiverCity} ${item.receiverDistrict} ${item.receiverAddress}`;
         this.orderDetail = res.orderItemVoList;
         this.payment = res.payment;
+        this.payCreate();
       })
+    },
+    payCreate(){
+      this.axios.defaults.baseURL = '/test';
+      this.axios.get(`/pay/create?orderId=${this.orderId}&amount=${this.payment}`)
+      .then((res)=>{
+        console.log(res)
+      }).catch(e=>{
+        this.imgSrc = e
+      })
+      this.axios.defaults.baseURL = '/api';
     },
     paySubmit(payType){
       if(payType == 1){
@@ -248,6 +261,9 @@ export default{
           padding-bottom: 24px;
           border-bottom: 1px solid #D7D7D7;
           margin-bottom: 26px;
+        }
+        .payImg{
+          margin:0 auto；
         }
         .pay-way{
           font-size:18px;

@@ -10,6 +10,14 @@ module.exports = {
         pathRewrite:{
           '/api':''
         }
+      },
+      '/test':{
+        target:'http://10.241.122.174:8083',
+        // target:'10.236.158.11:8081',
+        changeOrigin:true,
+        pathRewrite:{
+          '/test':''
+        }
       }
     }
   },
